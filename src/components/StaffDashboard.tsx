@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import logo from '../pethouse.jpg';
+import logo from '../petyow.jpg';
 import { User } from '../App';
 import { Button } from './ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';

@@ -216,7 +216,7 @@ export function HealthRecords({ user, accessToken, userRole }: HealthRecordsProp
                   <Label htmlFor="petId">Select Pet *</Label>
                   <Select
                     value={formData.petId}
-                    onValueChange={(value) => setFormData({ ...formData, petId: value })}
+                    onValueChange={(value: string) => setFormData({ ...formData, petId: value })}
                   >
                     <SelectTrigger id="petId">
                       <SelectValue placeholder="Choose a pet" />
@@ -235,7 +235,7 @@ export function HealthRecords({ user, accessToken, userRole }: HealthRecordsProp
                   <Label htmlFor="recordType">Record Type *</Label>
                   <Select
                     value={formData.recordType}
-                    onValueChange={(value) => setFormData({ ...formData, recordType: value })}
+                    onValueChange={(value: string) => setFormData({ ...formData, recordType: value })}
                   >
                     <SelectTrigger id="recordType">
                       <SelectValue />

@@ -1,8 +1,9 @@
+declare const Deno: any;
 // Load .env from the SAME folder
 import "jsr:@std/dotenv/load";
 
-import { Hono } from "jsr:@hono/hono";
-import { createClient } from "jsr:@supabase/supabase-js@2.49.8";
+import { Hono } from "hono";
+import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = Deno.env.get("SUPABASE_URL");
 const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
@@ -118,6 +119,6 @@ app.get("/send-reminders", async (c) => {
 });
 
 // Deno entrypoint
-if (import.meta.main) {
+if (Deno.main) {
   Deno.serve(app.fetch);
 }

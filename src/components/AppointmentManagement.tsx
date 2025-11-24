@@ -357,7 +357,7 @@ export function AppointmentManagement({ user, accessToken, userRole }: Appointme
                 <Label htmlFor="petId">Select Pet *</Label>
                 <Select
                   value={formData.petId}
-                  onValueChange={(value) => {
+                  onValueChange={(value: string) => {
                     const pet: any = pets.find(p => p.id === value);
                     setFormData({
                       ...formData,

@@ -1,3 +1,21 @@
+Option A — Update Vercel Install Command (recommended)
+1. In Vercel project Settings → Build & Output, set the Install Command to:
+    - `npm ci --include=dev`
+    This installs exact versions and includes `devDependencies` (so `vite` is available).
+2. Keep Build Command as `npm run build` and Output Directory `build`.
+3. Redeploy.
+
+If you're using GitHub Actions to build and deploy (we added example workflows), ensure the Actions also install devDependencies by using:
+
+```yaml
+- name: Install dependencies (include devDependencies)
+   run: npm ci --include=dev
+```
+
+Alternatively you can set the environment variable `NPM_CONFIG_PRODUCTION=false` in the project settings of Vercel/Netlify so normal installs include devDependencies.
+
+Notes & troubleshooting
+...
 Deployment guide — Vercel / Netlify
 
 This project is a Vite React app whose production build output is written to the `build` directory.
