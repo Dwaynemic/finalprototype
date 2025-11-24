@@ -5,7 +5,8 @@ import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { Heart, AlertCircle } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
+import logo from '../petlyow.jpg';
 import { Alert, AlertDescription } from './ui/alert';
 
 type RegisterProps = {
@@ -77,11 +78,11 @@ export function Register({ onRegisterSuccess, onSwitchToLogin }: RegisterProps) 
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-full mb-4">
-            <Heart className="w-8 h-8 text-white" />
-          </div>
-          <h1 className="text-secondary mb-2">Pet House Veterinary Clinic</h1>
-          <p className="text-muted-foreground">Create Your Account</p>
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-full mb-4 shadow-md">
+              <Heart className="w-8 h-8 text-white" />
+            </div>
+            <h1 className="text-secondary mb-2">Pet House Veterinary Clinic</h1>
+            <p className="text-muted-foreground">Create Your Account</p>
         </div>
 
         <Card>
