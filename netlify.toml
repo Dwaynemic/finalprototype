@@ -1,0 +1,8 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[context.production.environment]
+# Point the frontend to your deployed Supabase functions endpoint
+# (override this in Netlify site settings for secrets if desired)
+VITE_FUNCTIONS_BASE = "https://ibumptwkzlkniqcqmgvx.supabase.co/functions/v1/make-server-8a3943bb"
