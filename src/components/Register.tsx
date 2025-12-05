@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { projectId, publicAnonKey, functionsBase } from '../utils/supabase/info';
+import { projectId, publicAnonKey, functionsBase, supabase } from '../utils/supabase/info';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { AlertCircle } from 'lucide-react';
-import logo from '../petlyow.jpg';
+import logo from '../petlogo.jpg';
 import { Alert, AlertDescription } from './ui/alert';
 
 type RegisterProps = {
@@ -48,13 +48,7 @@ export function Register({ onRegisterSuccess, onSwitchToLogin }: RegisterProps) 
         return;
       }
 
-      // Auto-login after registration
-      const { createClient } = await import('@supabase/supabase-js');
-      const supabase = createClient(
-        `https://${projectId}.supabase.co`,
-        publicAnonKey
-      );
-
+      // Auto-login after registration using shared Supabase client
       const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -78,11 +72,11 @@ export function Register({ onRegisterSuccess, onSwitchToLogin }: RegisterProps) 
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-full mb-4 shadow-md">
-              <Heart className="w-8 h-8 text-white" />
-            </div>
-            <h1 className="text-secondary mb-2">Pet House Veterinary Clinic</h1>
-            <p className="text-muted-foreground">Create Your Account</p>
+          <div className="mx-auto mb-1 w-24 h-24  bg-primary overflow-hidden flex items-center justify-center shadow-lg">
+            <img src={logo} alt="Pethouse Logo" className="w-full h-full object-cover object-center transform scale-110"/>
+          </div>
+          <h1 className="text-secondary mb-2">Pet House Veterinary Clinic</h1>
+          <p className="text-muted-foreground">Create Your Account</p>
         </div>
 
         <Card>
@@ -104,7 +98,7 @@ export function Register({ onRegisterSuccess, onSwitchToLogin }: RegisterProps) 
                 <Input
                   id="name"
                   type="text"
-                  placeholder="John Doe"
+                  placeholder="Dwayne Michael Medel"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required

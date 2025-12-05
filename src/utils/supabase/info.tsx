@@ -25,3 +25,12 @@ export const functionsBase = envOverride
 	: (import.meta as any).env?.DEV
 		? '/functions/v1/make-server-8a3943bb'
 		: `https://${projectId}.supabase.co/functions/v1/make-server-8a3943bb`;
+
+// Export a singleton Supabase client for use across the frontend to avoid
+// creating multiple GoTrueClient instances which causes the warning shown
+// in the browser console. Import and use `supabase` from this module.
+import { createClient } from '@supabase/supabase-js';
+export const supabase = createClient(
+  `https://${projectId}.supabase.co`,
+  publicAnonKey
+);

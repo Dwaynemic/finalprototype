@@ -4,13 +4,7 @@ import { Register } from './components/Register';
 import { OwnerDashboard } from './components/OwnerDashboard';
 import { StaffDashboard } from './components/StaffDashboard';
 // ...existing code...
-import { createClient } from '@supabase/supabase-js';
-import { projectId, publicAnonKey, functionsBase } from './utils/supabase/info';
-
-const supabase = createClient(
-  `https://${projectId}.supabase.co`,
-  publicAnonKey
-);
+import { supabase, functionsBase } from './utils/supabase/info';
 
 export type User = {
   id: string;

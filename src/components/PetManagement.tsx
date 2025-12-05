@@ -8,8 +8,7 @@ import { Textarea } from './ui/textarea';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { Badge } from './ui/badge';
 import { Plus, PawPrint, Calendar, Syringe } from 'lucide-react';
-import { projectId, publicAnonKey, functionsBase } from '../utils/supabase/info';
-import { createClient } from '@supabase/supabase-js';
+import { functionsBase, supabase } from '../utils/supabase/info';
 
 type PetManagementProps = {
   user: User;
@@ -77,11 +76,6 @@ export function PetManagement({ user, accessToken }: PetManagementProps) {
       // If a photo is selected upload it to Supabase Storage first
       let photoUrl: string | undefined = undefined;
       if (selectedFile) {
-        const supabase = createClient(
-          `https://${projectId}.supabase.co`,
-          publicAnonKey
-        );
-
         // Ensure you have created a bucket named `pet-photos` in your Supabase project
         const timestamp = Date.now();
         const filePath = `pet-${timestamp}-${selectedFile.name}`;
